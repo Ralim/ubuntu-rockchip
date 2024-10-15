@@ -16,18 +16,13 @@ jobs:
           - desktop
           - server
         suite:
-          - jammy
+          # - jammy
           - noble
     steps:
       - name: Get more disk space
         uses: jlumbroso/free-disk-space@main
         with:
           tool-cache: false
-          android: true
-          dotnet: true
-          haskell: true
-          large-packages: true
-          swap-storage: true
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -64,18 +59,13 @@ jobs:
     strategy:
       matrix:
         suite:
-          - jammy
+          # - jammy
           - noble
     steps:
       - name: Get more disk space
         uses: jlumbroso/free-disk-space@main
         with:
           tool-cache: false
-          android: true
-          dotnet: true
-          haskell: true
-          large-packages: true
-          swap-storage: true
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -88,7 +78,7 @@ jobs:
         shell: bash
         run: |
           sudo apt-get update && sudo apt-get purge needrestart -y
-          sudo apt-get install -y build-essential gcc-aarch64-linux-gnu bison libelf-dev \
+          sudo apt-get install -y build-essential gcc-aarch64-linux-gnu bison libelf-dev pahole \
           qemu-user-static qemu-system-arm qemu-system u-boot-tools binfmt-support \
           debootstrap flex libssl-dev bc rsync kmod cpio xz-utils fakeroot parted \
           udev dosfstools uuid-runtime git-lfs device-tree-compiler python3 \
@@ -161,11 +151,6 @@ jobs:
         uses: jlumbroso/free-disk-space@main
         with:
           tool-cache: false
-          android: true
-          dotnet: true
-          haskell: true
-          large-packages: true
-          swap-storage: true
 
       - name: Checkout code
         uses: actions/checkout@v4
